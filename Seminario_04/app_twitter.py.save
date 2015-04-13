@@ -1,0 +1,26 @@
+
+
+#Modulo que contiene la inicializacion de las claves 
+#y autentificacion para la app de twitter
+
+import twitter
+
+"""Rellenamos los parametros de las claves de twitter para usar la API"""
+
+CONSUMER_KEY = 'U5TdZAiwapwACG7TkCVV5MAhD'
+CONSUMER_SECRET = 'rr3nNSE0ICIKeShLzswWTmSPAYbnLoVEoOwZ81r0ZXdAFLjhkA'
+OAUTH_TOKEN = '800577547-nlbgBw4i9Vjd1repQzvLqN3FsH6BhpdozX9MoIEQ'
+OAUTH_TOKEN_SECRET = '8rHFpKgEFrODU6BB6NclupUX5ue4C9As1oYfyhglsqxHJ'
+
+auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
+                           CONSUMER_KEY, CONSUMER_SECRET)
+
+twitter_api = twitter.Twitter(domain='api.twitter.com', 
+                              api_version='1.1',
+                              auth=auth
+                             )
+
+WORLD_WOE_ID = 1
+
+world_trends = twitter_api.trends.place(_id=WORLD_WOE_ID)
+print world_trends
