@@ -16,7 +16,7 @@ con la API twitter"""
 
 twitter_api = app_twitter.oauth_login()
 hastags = raw_input("Hastags con tuits a buscar: ")
-hastags_trends = twitter_api.search.tweets(q = 'hastags', result_type = 'index')
+hastags_trends = twitter_api.search.tweets(q = hastags)# result_type = 'index')
 #guardamos el fichero json
 
 app_twitter.save_json('Maps_hastags', hastags_trends)
@@ -28,17 +28,19 @@ recover_data = app_twitter.load_json('Maps_hastags')
 datos = json.loads(open('Maps_hastags.json').read())
 
 lista_lugares = []
-
+cont = False 
 
 for lugar in datos["statuses"]:
 	if lugar["coordinates"] != None:
 		lugar_actual =  lugar["coordinates"]
 		x = lugar_actual.values()[1][0]
 		y = lugar_actual.values()[1][1]
-        lista_lugares.append([x,y])
+		lista_lugares.append([x,y])
+		cont = True
 
-#print lista_lugares
-
+if cont == False:
+	print "No se han encontrado lugares marcados con este hastags"
+	print "Se tu el primero en poner tu ubicacion con el hastags, ", hastags
 
 
 
