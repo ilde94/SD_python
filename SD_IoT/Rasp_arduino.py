@@ -41,7 +41,7 @@ while True:
     conexion = httplib.HTTPConnection("api.thingspeak.com:80")
 
     #paso de parametros para el envio del formulario POST
-    params = urllib.urlencode({'key': "ZCEQVYGHN3J1CDHM",'field1': campo1, 'field2': campo2, 'field3': campo3})
+    params = urllib.urlencode({'key': "**************",'field1': campo1, 'field2': campo2, 'field3': campo3})
     headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
     #se hace la peticion
     try:

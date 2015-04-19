@@ -70,7 +70,5 @@ void loop()
 
   }
   digitalWrite(5, LOW);
-  //pequeño delay de 15 segundos para no sobrecargar demsaiado
-  //delay(3000);    
 }
 
